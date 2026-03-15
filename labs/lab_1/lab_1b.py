@@ -44,6 +44,15 @@ def sanitize_num(text: str) -> float:
             return num
         except ValueError:
             print("Not valid input, enter a number")
+def sanitize_op(inp: str) -> str:
+    while True:
+        try:
+            op = input((inp))
+            if op == "add" or op == "subtract" or op == "divide" or op == "multiply":
+                return op
+        except:
+            print("Not a valid operation.")
+    
 def main():
     
     print(f"===== Simple Calculator =====")
@@ -51,7 +60,7 @@ def main():
     # Ask the user for sample input    
     num1 = sanitize_num("Enter the first number: ")
     num2 = sanitize_num("Enter the second number: ")
-    operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
+    operation = sanitize_op("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
 
     # Perform the calculation and display the result
     result = simple_calculator(operation, num1, num2)
